@@ -5,7 +5,7 @@ import { toPlainText } from '@/sanity/sanity-utils';
 export default function ProjectCard({ project }: { project: Project }) {
 
     return (
-        <div className="w-[300px] h-[300px] p-2" >
+        <div className="w-[250px] h-[250px] p-2" >
             <div className="w-full h-full relative overflow-hidden">
                 {project.image && (
                     <Image

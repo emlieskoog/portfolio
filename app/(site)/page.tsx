@@ -5,14 +5,18 @@ export default async function Home() {
   const projects = await getProjects()
 
   return (
-    <div className="max-w-5xl mx-auto py-20 px-10">
-      <h1 className="text-7xl font-extrabold px-10">Hello, I&apos;m <span className="bg-gradient-to-r from-pink-600 to-pink-200 bg-clip-text text-transparent">Emelie!</span></h1>
-      <p className="mt-5 text-xl text-gray-600 pl-10">Chekout some of my projects below.</p>
-      <h2 className="mt-24 font-bold text-gray-600 text-3xl pl-10"><span className="bg-gradient-to-r from-pink-200 to-pink-600 bg-clip-text text-transparent">My Projects</span></h2>
+    <div className="flex flex-col max-w-5xl justify-between">
+      <div>
+        <h1 className="text-7xl font-extrabold px-10 py-10">Hello, I&apos;m <span className="bg-gradient-to-r from-pink-600 to-pink-200 bg-clip-text text-transparent">Emelie!</span></h1>
+        <p className="mt-5 text-xl text-gray-600 pl-10">Chekout some of my projects below.</p>
+      </div>
+      <div>
+        <h2 className="mt-20 font-bold text-gray-600 text-3xl pl-10"><span className="bg-gradient-to-r from-pink-200 to-pink-600 bg-clip-text text-transparent">My Projects</span></h2>
+        <ProjectCarousel projects={projects} />
+      </div>
 
-      <ProjectCarousel projects={projects} />
       <div className="flex gap-2 items-end gap-2">
-        <h2 className="mt-24 font-bold text-gray-600 text-3xl pl-10"><span className="bg-gradient-to-r from-pink-200 to-pink-600 bg-clip-text text-transparent">Contact me!</span></h2>
+        <h2 className="mt-20 font-bold text-gray-600 text-3xl pl-10"><span className="bg-gradient-to-r from-pink-200 to-pink-600 bg-clip-text text-transparent">Contact me!</span></h2>
 
         <button className="font-semibold text-pink-600 rounded h-9 pl-8">
           <svg className="w-5 h-5 fill-current" role="img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">

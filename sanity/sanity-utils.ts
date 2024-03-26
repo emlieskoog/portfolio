@@ -1,5 +1,6 @@
 import { Project } from "@/types/Project";
 import { createClient, groq } from "next-sanity";
+import { PortableTextBlock, PortableTextChild } from "sanity"
 
 export async function getProjects(): Promise<Project[]> {
     const client = createClient({
@@ -19,4 +20,21 @@ export async function getProjects(): Promise<Project[]> {
             content
         }`
     )
+}
+
+export function toPlainText(blocks: PortableTextBlock[] | null | undefined): string {
+    if (!blocks) {
+        return '';
+    }
+
+    return blocks
+        .map((block: PortableTextBlock) => {
+            if (block._type !== 'block' || !block.children) {
+                return '';
+            }
+            return (block.children as PortableTextChild[])
+                .map((child) => child.text)
+                .join('');
+        })
+        .join('\n\n');
 }

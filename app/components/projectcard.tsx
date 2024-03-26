@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Image from "next/image"
 import { Project } from '@/types/Project';
+import { toPlainText } from '@/sanity/sanity-utils';
 
 export default function ProjectCard({ project }: { project: Project }) {
     const [isFlipped, setIsFlipped] = useState(false);
@@ -10,7 +11,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         setIsFlipped(!isFlipped);
     };
     return (
-        <div className={`w-[300px] h-[300px] max-w-[300px] ${isFlipped ? 'transform rotate-y-180' : ''}`} onClick={handleClick}>
+        <div className={`w-[300px] h-[300px] ${isFlipped ? 'transform rotate-y-180' : ''}`} onClick={handleClick} style={{ transition: 'transform 5s ease' }}>
             <div className={`front w-full h-full relative overflow-hidden ${isFlipped ? 'hidden' : ''}`}>
                 {project.image && (
                     <Image
@@ -22,10 +23,16 @@ export default function ProjectCard({ project }: { project: Project }) {
                 )}
 
             </div>
-            <div className={`back w-full h-full bg-white relative overflow-y-auto border-pink-400 ${isFlipped ? '' : 'hidden'}`}>
-                <div className="text-pink-700 font-extrabold bg-clip-text absolute bottom-0 w-full p-2 text-center">
-                    {project.name}
+            <div className={`back w-full h-full rounded-lg bg-pink-100 relative overflow-y-auto border-pink-400 ${isFlipped ? '' : 'hidden'}`}>
+                <div className='h-full flex flex-col justify-center'>
+                    <div className="text-pink-500 font-bold text-2xl bg-clip-text w-full p-5 text-center ">
+                        {project.name}
+                    </div>
+                    <div className="text-pink-500 font-bold bg-clip-text w-full p-5 text-center ">
+                        {toPlainText(project.content)}
+                    </div>
                 </div>
+
             </div>
         </div>
 

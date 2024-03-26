@@ -1,6 +1,6 @@
 import { getProjects } from "@/sanity/sanity-utils"
 import Image from "next/image"
-import ProjectCard from "./components/projectcard"
+import ProjectCard from "../components/projectcard"
 
 export default async function Home() {
   const projects = await getProjects()
@@ -11,7 +11,7 @@ export default async function Home() {
       <p className="mt-5 text-xl text-gray-600">Chekout some of my projects below.</p>
       <h2 className="mt-24 font-bold text-gray-600 text-3xl">My Projects</h2>
 
-      <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mt-5 flex flex-wrap gap-4">
         {projects.map((project) => (
           <ProjectCard project={project} key={project._id} />
         ))}

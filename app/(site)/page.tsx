@@ -5,12 +5,10 @@ export default async function Home() {
   const projects = await getProjects()
 
   return (
-    <div className="flex flex-col max-w-5xl justify-between">
+    <div className="flex flex-col justify-between items-center">
       <div>
-        <h1 className="text-7xl font-extrabold px-10 py-10">Hello, I&apos;m <span className="bg-gradient-to-r from-pink-600 to-pink-200 bg-clip-text text-transparent">Emelie!</span></h1>
+        <h1 className="text-6xl font-extrabold px-10 py-10">Hello, I&apos;m <span className="bg-gradient-to-r from-pink-600 to-pink-200 bg-clip-text text-transparent">Emelie!</span></h1>
         <p className="mt-5 text-xl text-gray-600 pl-10">Chekout some of my projects below.</p>
-      </div>
-      <div>
         <h2 className="mt-20 font-bold text-gray-600 text-3xl pl-10"><span className="bg-gradient-to-r from-pink-200 to-pink-600 bg-clip-text text-transparent">My Projects</span></h2>
         <ProjectCarousel projects={projects} />
       </div>

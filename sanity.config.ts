@@ -9,7 +9,8 @@ const config = defineConfig({
     apiVersion: '2024-02-09',
     basePath: '/admin',
     plugins: [structureTool()],
-    schema: { types: schemas }
+    schema: { types: schemas },
+    useCdn: false,
 })
 
 export default config
